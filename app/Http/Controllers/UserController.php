@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     //Show Registration Form
     public function register(){
-        return view('/users.register');
+        return view('/users/register');
     }
 
     // Create and Store New User
@@ -44,7 +44,7 @@ class UserController extends Controller
     }
 
     public function login(){
-        return view('users.login');
+        return view('/users/login');
     }
 
     // Authenticate User
