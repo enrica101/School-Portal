@@ -18,14 +18,14 @@ class StudentController extends Controller
     ];
     // Show all students
     public function index(){
-        return view('/index',[
+        return view('/students/index',[
             'students' => Student::paginate(5)
         ]);
     }
 
     // Show single student
     public function show(Student $student){
-        return view('/students/{student}', [
+        return view('/students/show', [
             'student' => $student
         ]);
     }
@@ -34,7 +34,7 @@ class StudentController extends Controller
     public function create(){
         $programs = Program::getProgramsByCollege(1);
         $years = $this->years;
-        return view('/create', 
+        return view('/students/create', 
         [
             'programs' => $programs, 
             'years' => $years
@@ -54,14 +54,14 @@ class StudentController extends Controller
 
         Student::create($formInputs);
 
-        return redirect('/index');
+        return redirect('/students/index');
     }
        
         
     public function edit(Student $student){
         $programs = Program::getProgramsByCollege(1);
         $years = $this->years;
-        return view('/students/{student}/edit', 
+        return view('/students/edit', 
         [
             'student' => $student,
             'programs' => $programs, 
@@ -80,7 +80,7 @@ class StudentController extends Controller
 
         $student->update($formInputs);
 
-        return view('/students/{students}', ['student' => $student]);
+        return view('/students/show', ['student' => $student]);
     }
 
 
